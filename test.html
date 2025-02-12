@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لعبة المتاهة باستخدام الصوت</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .maze {
+      display: grid;
+      grid-template-columns: repeat(5, 50px);
+      grid-template-rows: repeat(5, 50px);
+      gap: 5px;
+      margin: 0 auto;
+    }
+    .cell {
+      width: 50px;
+      height: 50px;
+      background-color: lightgray;
+      border: 1px solid black;
+    }
+    .player {
+      background-color: blue;
+    }
+    .exit {
+      background-color: green;
+    }
+    .wall {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>لعبة المتاهة - استخدم الأوامر الصوتية للتحرك</h1>
+  <p>قل "فوق"، "تحت"، "يسار"، أو "يمين" للتحرك داخل المتاهة.</p>
+
+  <div id="maze" class="maze"></div>
+  <p id="status">ابدأ اللعبة وقل "فوق"، "تحت"، "يسار"، أو "يمين".</p>
+
+  <script>
+    // تمثيل المتاهة كمصفوفة
+    const maze = [
+      [0, 0, 0, 0, 0],
+      [0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0],
+      [0, 1, 0, 0, 0],
+      [0, 0, 0, 1, 0]
+    ];
+
+    // موقع اللاعب في المتاهة
+    const player = { x: 0, y: 0 };
+    const exit = { x: 4, y: 4 }; // موقع الخروج
+
+    // إنشاء المتاهة داخل الصفحة
+    const mazeContainer = document.getElementById('maze');
+    function createMaze() {
+      mazeContainer.innerHTML = ''; // مسح المتاهة الحالية قبل رسمها مرة أخرى
+      for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 5; col++) {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          if (maze[row][col] === 1) {
+            cell.classList.add('wall'); // جدار
+          }
+          if (player.x === col && player.y === row) {
+            cell.classList.add('player'); // اللاعب
+          }
+          if (exit.x === col && exit.y === row) {
+            cell.classList.add('exit'); // الخروج
+          }
+          mazeContainer.appendChild(cell);
+        }
+      }
+    }
+
+    // تحريك اللاعب بناءً على الأمر الصوتي
+    function movePlayer(direction) {
+      const newX = player.x;
+      const newY = player.y;
+
+      if (direction === 'فوق' && player.y > 0 && maze[player.y - 1][player.x] !== 1) {
+        player.y--;
+      } else if (direction === 'تحت' && player.y < 4 && maze[player.y + 1][player.x] !== 1) {
+        player.y++;
+      } else if (direction === 'يسار' && player.x > 0 && maze[player.y][player.x - 1] !== 1) {
+        player.x--;
+      } else if (direction === 'يمين' && player.x < 4 && maze[player.y][player.x + 1] !== 1) {
+        player.x++;
+      }
+
+      createMaze();
+      checkWin();
+    }
+
+    // التحقق إذا وصل اللاعب إلى الخروج
+    function checkWin() {
+      if (player.x === exit.x && player.y === exit.y) {
+        document.getElementById('status').textContent = 'مبروك! لقد فزت!';
+      }
+    }
+
+    // إعداد التعرف على الصوت
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'ar-AR'; // تعيين اللغة إلى العربية
+    recognition.continuous = true;
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+      if (['فوق', 'تحت', 'يسار', 'يمين'].includes(transcript)) {
+        movePlayer(transcript);
+      }
+    };
+
+    recognition.onerror = (event) => {
+      console.error('خطأ في التعرف على الصوت:', event.error);
+    };
+
+    recognition.onstart = () => {
+      document.getElementById('status').textContent = 'استماع لأوامرك...';
+    };
+
+    recognition.start();
+
+    createMaze(); // رسم المتاهة في البداية
+  </script>
+
+</body>
+</html>

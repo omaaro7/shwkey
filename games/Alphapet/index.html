@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../../assets/css/root.css" />
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../assets/css/sweetalert2.css" />
+    <link href="styles.css" rel="stylesheet" />
+    <title>Quiz App</title>
+  </head>
+  <body class="px-3">
+    <div class="video">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/95Cwu57ZvXA?si=IjcJgr3fSTOQsC6L"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div class="button submit">
+      <button class="btn">عرض السؤال</button>
+    </div>
+    <div class="qustions-box col-12">
+      <div class="quistion-title col-12 text-center mt-3 d-flex align-items-center">
+        <img src="e.jpg" alt="">
+        <h2 id="question-title">من أنا ؟</h2>
+
+      </div>
+      <div
+        class="answers col-12 d-flex justify-content-between align-items-center flex-wrap"
+      >
+        <div class="answer col-12 col-md-5 text-center mt-2" data-cor="0">
+          أ
+        </div>
+        <div class="answer col-12 col-md-5 text-center mt-2" data-cor="0">
+          ظ
+        </div>
+        <div class="answer col-12 col-md-5 text-center mt-2" data-cor="1">
+          ل
+        </div>
+        <div class="answer col-12 col-md-5 text-center mt-2" data-cor="0">
+          م
+        </div>
+      </div>
+    </div>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=OoIbnfpU"></script>
+    <script src="../../assets/js/modules/tts.js" type="module"></script>
+    <script src="../../assets/js/tools/bootstrap.js"></script>
+    <script src="../../assets/js/tools/sweetalert2.js"></script>
+    <script type="module" src="../../assets/js/pages/index.js"></script>
+  </body>
+</html>

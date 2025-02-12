@@ -1,0 +1,25 @@
+:root {
+  --background-color: #ffffff;
+  --main-color: #00a3a3;
+  --trans:#00a3a385;
+  --titles-color: #000000;
+  --second-color: #086868;
+  --thered-color: #f3f4f6  ;
+  --y-color: #ffbf00;
+  --b-color: #2563eb;
+  --p-color: #ca61ff;
+  --br: #a0203956;
+  --r: #9f1239;
+}
+@font-face {
+    font-family: bolde;
+    src: url(../fonts/Almarai-Bold.ttf);
+  }
+  @font-face {
+    font-family: gal;
+    src: url(../fonts/AA-GALAXY.OTF);
+  }
+  @font-face {
+    font-family: head;
+    src: url(../fonts/head.ttf);
+  }

@@ -1,0 +1,22 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: var(--main-color);
+}
+.points__box,.title span{
+    background-color: var(--second-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+}
+.box-content{
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.box-title,.box-desc{
+    border-bottom: 2px solid var(--main-color);
+}
+.box-title{
+    font-size: 25px;
+}

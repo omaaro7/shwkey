@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/all.css" />
+    <link rel="stylesheet" href="assets/css/sharp-light.css" />
+    <link rel="stylesheet" href="assets/css/sharp-regular.css" />
+    <link rel="stylesheet" href="assets/css/sharp-solid.css" />
+    <link rel="stylesheet" href="assets/css/sharp-thin.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/sweetalert2.css" />
+    <link rel="stylesheet" href="assets/css/aos.css" />
+    <link rel="stylesheet" href="assets/css/root.css" />
+    <link rel="stylesheet" href="assets/css/pages/dashboard.css" />
+    <title>معلومات عن ذوي الهمم</title>
+  </head>
+<body>
+<header class="header">
+  <nav>
+    <div class="nav__bar d-flex align-items-center gap-2">
+        <div class="logo">
+            <a href="#">ساند طفلك</a>
+        </div>
+    </div>
+
+    <div class="button__grouop d-flex align-items-center">
+        
+        <button class="btn nav__btn px-2">
+            <a href="pages/main/home.php" class="nav-link"><i class="fa-light fa-joystick"></i></a>
+        </button>
+    </div>
+</nav>
+<div class="header-title fs-2 col-12 mt-5 text-center">
+  الصفحه الرئيسية
+</div>
+  </header>
+
+  <section class="section-info col-12">
+    <div class="section-title fs-2 pe-4">الاحصائيات <span>!</span></div>
+    <div
+    class="boxes mt-2 p-3 col-12 d-flex flex-wrap align-items-center justify-content-center"
+  >
+  <div class="box col-11 mt-2 col-md-6 col-lg-4 d-flex justify-content-center">
+    <div class="box-content col-11 p-3">
+      <div class="box-content-header d-flex justify-content-between">
+        <div class="text">عدد  النقاط</div>
+        <div class="icon"><i class="fa-sharp fa-light fa-coins" style="color: rgb(235, 194, 11);"></i></div>
+      </div>
+      <div class="box-content-value col-12 fs-1"></div>
+      <div class="box-content-details-shower col-12 ">
+        <button>عرض التفاصيل</button>
+      </div>
+    </div>
+  </div>
+  <div class="box col-11 mt-2 col-md-6 col-lg-4 d-flex justify-content-center">
+    <div class="box-content col-11 p-3">
+      <div class="box-content-header d-flex justify-content-between">
+        <div class="text">عدد الألعاب المكتملة</div>
+        <div class="icon"><i class="fa-light fa-circle-check"></i></div>
+      </div>
+      <div class="box-content-value col-12 fs-1"></div>
+      <div class="box-content-details-shower col-12 ">
+        <button>عرض التفاصيل</button>
+      </div>
+    </div>
+  </div>
+  <div class="box col-11 mt-2 col-md-6 col-lg-4 d-flex justify-content-center">
+    <div class="box-content col-11 p-3">
+      <div class="box-content-header d-flex justify-content-between">
+        <div class="text">عدد الألعاب غير المكتملة</div>
+        <div class="icon"><i class="fa-light fa-circle-xmark" style="color: red;"></i></div>
+      </div>
+      <div class="box-content-value col-12 fs-1"></div>
+      <div class="box-content-details-shower col-12 ">
+        <button>عرض التفاصيل</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="details-container col-12 d-flex justify-content-center align-items-center d-none">
+    <div class="details-box col-11 col-md-9 col-lg-7 col-xl-5 p-3 rounded-2 bg-light">
+      <div class="close"><i class="fa-solid fa-circle-xmark fs-4" style="color: var(--main-color);cursor: pointer;"></i></div>
+      <div class="title col-12 text-center fs-4">تفاصيل <span>الالعاب المكتملة</span></div>
+      <div class="menu d-flex gap-1 col-12 mt-2">
+        <div class="name col-6 p-2">اسم اللعبه</div>
+        <div class="value col-6 p-2">التصنيف</div>
+      </div>
+      <div class="list col-12 mt-2"></div>
+    </div>
+  </div>
+  </section>
+<script src="assets/js/tools/aos.js"></script>
+    <script>
+      AOS.init({});
+    </script>
+    <script src="assets/js/tools/bootstrap.js"></script>
+    <script src="assets/js/tools/bootstrap.min.js"></script>
+    <script src="assets/js/tools/info.js"></script>
+    <script src="assets/js/tools/sweetalert2.js"></script>
+    <script src="assets/js/modules/getCookies.js" type="module"></script>
+    <script src="assets/js/dashboard.js" type="module"></script>
+</body>
+</html>

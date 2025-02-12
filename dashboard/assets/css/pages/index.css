@@ -1,0 +1,69 @@
+
+
+body{
+    background-color: var(--thered-color);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    border-radius: 10px;
+    padding: 10px 0;
+    font-family: bolde;
+}
+.right{
+    height: 100%;
+    background-color: var(--background-color);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 2px solid var(--main-color);
+}
+.header{
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+.header .profile .img img{
+    width: 40px;
+
+}
+.box-content{
+    background-color: var(--background-color);
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.left{
+    height: 100%;
+}
+.list{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--thered-color);
+    border-radius: 10px;
+}
+.list-item{
+    font-size: 14px;
+    padding:7px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+}
+
+.list-item.active,.list-item:hover{
+    background-color: var(--trans);
+    color: var(--background-color);
+
+}
+.new-content{
+    border-right: 2px solid var(--main-color);
+    border-left: 2px solid var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+}
+/* .item.active{
+    background-color: var(--main-color);
+    padding: 10px 0;
+    color: var(--background-color);
+    border-radius: 10px;
+} */

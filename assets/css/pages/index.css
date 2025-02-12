@@ -1,0 +1,103 @@
+html{
+  width: 100vw;
+}
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: fit-content;
+  width: 100%;
+  overflow-x: hidden;
+}
+.header {
+  background-image: url("../../media/imgs/1.png");
+}
+.hint {
+  padding: 15px 20px;
+}
+.first {
+  position: relative;
+}
+ .arrow {
+  position: absolute;
+  width: 328px;
+  height: 88px;
+  right: 42%;
+  top: 41%;
+  z-index: -1;
+}
+.hint-text {
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  box-shadow: -13px 10px 0px 1px #00000087;
+}
+
+.essay-title,
+.types-title {
+  color: black;
+}
+.hint span {
+  color: var(--main-color);
+}
+.hint-video iframe {
+  height: 100%;
+  border-radius: 10px;
+  height: 100%;
+  min-height: 300px;
+}
+.type-click {
+  background-color: #f3f4f6;
+  border: none;
+  font-size: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.item {
+  padding: 10px;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+}
+.positive .label,
+.negative .label {
+  font-size: 25px;
+  color: var(--main-color);
+}
+.positive p,
+.negative p {
+  line-height: 1.1;
+}
+.negative .label {
+  color: red;
+}
+.help {
+}
+.types-title,
+.ways-title,
+.help-title,
+.help-container {
+  position: relative;
+}
+.help-text {
+  background-color: #f3f4f6;
+}
+
+.types-title img,
+.ways-title img,
+.help-title img {
+  width: 50%;
+  height: 100px;
+  z-index: -1;
+  position: absolute;
+  top: -10px;
+  right: 26%;
+}
+@media (max-width: 760px) {
+  .types-title img,
+  .ways-title img,
+  .help-title img {
+    width: 80%;
+    top: -14px;
+    right: 10%;
+  }
+}

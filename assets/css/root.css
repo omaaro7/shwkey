@@ -1,0 +1,29 @@
+:root {
+  --background-color: #ffffff;
+  --main-color: #00a3a3;
+  --titles-color: #dde6ed;
+  --second-color: #0a7979;
+  --thered-color: rgb(156 163 175);
+  --vid-color: #ffbf00;
+  --exam-color: #14b8a6;
+  --file-color: #2563eb;
+  --sound-color: #ca61ff;
+  --progress: #a0203956;
+  --progress-bar: #9f1239;
+  /*?admin*/
+  --backgroundCl: #C9E6F0;
+  --headerCl:#F96E2A;
+  --thCl:#FBF8EF;
+}
+@font-face {
+    font-family: bolde;
+    src: url(fonts/Almarai-Bold.ttf);
+  }
+  @font-face {
+    font-family: gal;
+    src: url(fonts/AA-GALAXY.OTF);
+  }
+  @font-face {
+    font-family: head;
+    src: url(fonts/head.ttf);
+  }
