@@ -46,7 +46,21 @@
     <section class="boxes mt-5 p-3 pt-5 col-12 d-flex flex-wrap align-items-center justify-content-center border-0">
     </section>
     
-
+    <section class="sticky">
+  <div class="bubbles">
+      <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    
+  </div>
+</section>
     <script src="../../assets/js/tools/aos.js"></script>
     <script>
         AOS.init({});

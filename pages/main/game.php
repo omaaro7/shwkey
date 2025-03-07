@@ -128,6 +128,21 @@
         <div class="game-play col-12 col-lg-7">
         <iframe  frameborder="0" width="100%" style="height: 100%;" class="mt-3 rounded-2"></iframe>
         </div>
+        <section class="sticky">
+  <div class="bubbles">
+      <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    
+  </div>
+</section>
     </section>
     <script src="../../assets/js/tools/aos.js"></script>
     <script>

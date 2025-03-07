@@ -14,15 +14,39 @@ const SEARCH_CONFIG = [
     ],
     'games' => [
         'fields' => ['name', 'description', 'category'],
-        'columns' => ['id', 'name', 'points', 'level', 'tech', 'description', 
-                     'path', 'thumnail', 'storage_value', 'storage_value_value', 'category']
+        'columns' => [
+            'id',
+            'name',
+            'points',
+            'level',
+            'tech',
+            'description',
+            'path',
+            'thumnail',
+            'storage_value',
+            'storage_value_value',
+            'category'
+        ]
     ],
     'users' => [
-        'fields' => ['user_name', 'name', 'parent_name','parent_type',"date_birth","parent_phonenumber","parent_data_birth"],
-        'columns' => ['id', 'create_time', 'user_name', 'name', 'parent_name', 
-                     'date_birth', 'parent_data_birth', 'parent_type', 
-                     'finshed_games', 'parent_phonenumber', 'type', 'stat', 
-                     'level', 'coins', 'edited']
+        'fields' => ['user_name', 'name', 'parent_name', "date_birth", "parent_phonenumber", "parent_data_birth"],
+        'columns' => [
+            'id',
+            'create_time',
+            'user_name',
+            'name',
+            'parent_name',
+            'date_birth',
+            'parent_data_birth',
+            'parent_type',
+            'finshed_games',
+            'parent_phonenumber',
+            'type',
+            'stat',
+            'level',
+            'coins',
+            'edited'
+        ]
     ]
 ];
 
@@ -54,27 +78,27 @@ try {
         foreach (SEARCH_CONFIG as $table => $config) {
             $fields = $config['fields'];
             $columns = $config['columns'];
-            
+
             // Build SQL query
             $conditions = implode(' OR ', array_map(
-                fn($f) => "$f LIKE CONCAT('%', ?, '%')", 
+                fn($f) => "$f LIKE CONCAT('%', ?, '%')",
                 $fields
             ));
-            
+
             $stmt = $conn->prepare("
                 SELECT " . implode(', ', $columns) . "
                 FROM $table
                 WHERE $conditions
             ");
-            
+
             // Bind parameters
             $params = array_fill(0, count($fields), $searchTerm);
             $stmt->bind_param(str_repeat('s', count($params)), ...$params);
-            
+
             // Execute and process results
             $stmt->execute();
             $result = $stmt->get_result();
-            
+
             while ($row = $result->fetch_assoc()) {
                 $matched = [];
                 foreach ($fields as $field) {
@@ -85,7 +109,7 @@ try {
                 $row['matched_columns'] = $matched;
                 $response['data'][$table][] = $row;
             }
-            
+
             $stmt->close();
         }
     }

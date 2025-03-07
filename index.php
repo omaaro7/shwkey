@@ -45,7 +45,6 @@
         وكيف <span>نساهم في دعمهم </span>؟
       </h1>
     </div>
-    <div class="blur-line"></div>
   </header>
   <section
     class="col-12 first hint-container d-flex align-items-stretch justify-content-center justify-content-lg-between flex-wrap  px-3  py-4">
@@ -289,6 +288,21 @@
       </div>
 
   </footer>
+  <section class="sticky">
+  <div class="bubbles">
+      <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    
+  </div>
+</section>
   <script src="assets/js/tools/aos.js"></script>
   <script>
     AOS.init({});
