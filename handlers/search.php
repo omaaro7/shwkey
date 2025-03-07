@@ -18,7 +18,7 @@ const SEARCH_CONFIG = [
                      'path', 'thumnail', 'storage_value', 'storage_value_value', 'category']
     ],
     'users' => [
-        'fields' => ['user_name', 'name', 'parent_name'],
+        'fields' => ['user_name', 'name', 'parent_name','parent_type',"date_birth","parent_phonenumber","parent_data_birth"],
         'columns' => ['id', 'create_time', 'user_name', 'name', 'parent_name', 
                      'date_birth', 'parent_data_birth', 'parent_type', 
                      'finshed_games', 'parent_phonenumber', 'type', 'stat', 

@@ -9,7 +9,7 @@ function fetchData($tableName, $conditions, $conn) {
     $tableName = preg_replace('/[^a-zA-Z0-9_]/', '', $tableName);
 
     // Build the query
-    $query = "SELECT * FROM `$tableName`";
+    $query = "SELECT * FROM `$tableName`  ";
 
     // Add conditions if provided
     if (!empty($conditions)) {

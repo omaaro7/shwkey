@@ -32,7 +32,7 @@ await initializeData();
         if (!isEnglishA && isEnglishB) return 1;
 
         // If both are the same type (English or Arabic), sort normally
-        return a.name.localeCompare(b.name, "ar", { sensitivity: "base" });
+        return a.name.localeCompare(b.name, "en", { sensitivity: "base" });
       });
     },
   };
@@ -76,15 +76,13 @@ await initializeData();
 })();
 //*search on user
 (async () => {
-  let tableHeader = document.querySelector(".users-list-header")
+  let tableHeader = document.querySelector(".users-list-header");
   let searchInput = document.querySelector("form.search input");
   let searchResultBox = document.querySelector(
     "form.search .serch-results-box"
   );
   searchInput.addEventListener("input", async (e) => {
-    let res = await fetch(
-      `../handlers/search.php?&q=${e.target.value}`
-    );
+    let res = await fetch(`../handlers/search.php?&q=${e.target.value}`);
     let data = await res.json();
     console.log(data);
 
@@ -98,12 +96,12 @@ await initializeData();
       coins: "النقات",
     };
     let result = [];
-     await data.data.users.forEach((ele, index) => {
+    await data.data.users.forEach((ele, index) => {
       ele.matched_columns.forEach((column) => {
-        Object.keys(titles).forEach((key) => {
+        Object.keys(titles).forEach((key, index) => {
           if (column == key) {
             result.push({
-              title: [titles[`${key}`],key],
+              title: [titles[`${key}`], key],
               main_title: column,
               id: ele.id,
               row_data: ele[`${key}`],
@@ -113,14 +111,19 @@ await initializeData();
       });
     });
     console.log(result);
-    
+
     //!set results in box
     console.log(result);
-    
+    let resultsMap = new Map();
+    result.map((ele, index) => {
+      resultsMap.set(index+ 1 , ele);
+    });
+    console.log(resultsMap);
+
     searchResultBox.innerHTML = "";
-    if (result.length != 0) {
+    if (result.size != 0) {
       searchResultBox.classList.remove("d-none");
-      result.reverse().forEach((ele, index) => {
+      result.forEach((ele, index) => {
         let item = `<div class="res-item col-12 p-2 d-flex align-items-center mt-2" data-id="${ele.id}" data-key="${ele.title[1]}">
                 <div class="res-item-title"> ${ele.title[0]} : </div>
                 <div class="res-item-value">${ele.row_data} </div>
@@ -134,6 +137,14 @@ await initializeData();
 
       res.forEach((ele, index) => {
         ele.addEventListener("click", async (e) => {
+          for (const tit of tableHeader.children) {
+            tit.style.cssText = `
+                color:black;
+                background:transparent;
+                padding:0 0;
+                border-radius:0px;
+              `;
+          }
           usersBox.innerHTML = "";
           searchResultBox.classList.add("d-none");
           result.forEach((one) => {
@@ -141,17 +152,16 @@ await initializeData();
               if (
                 user.id == one.id &&
                 user[`${one.main_title}`] == one.row_data
-                
-              ) {                
-                for (const tit of tableHeader.children) {                  
-                    if (tit.id == one.title[1]) {
-                      tit.style.cssText = `
+              ) {
+                for (const tit of tableHeader.children) {
+                  if (tit.id == e.target.dataset.key) {
+                    tit.style.cssText = `
                         color:white;
                         background:rgb(47 136 220);
                         padding:10px 0;
                         border-radius:40px;
-                      `
-                    }
+                      `;
+                  }
                 }
                 usersBox.innerHTML += `
                   <div class="user-list-item col-12 d-flex align-items-center justify-content-between px-2 py-3">
