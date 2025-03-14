@@ -1,7 +1,7 @@
 <nav>
     <div class="nav__bar d-flex">
         <div class="logo">
-            <a href="#">ساند طفلك</a>
+            <a href="#">خطوة هِمَّة</a>
         </div>
         <div class="points__box d-flex gap-2">
             <div class="points__box__title">عدد النقاط :</div>

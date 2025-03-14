@@ -39,7 +39,7 @@
               <div class="input-field">
                 <label>النوع</label>
                 <select class="val" required>
-                  <option disabled selected>اختر الجنس</option>
+                  <option disabled selected style="color:white;">اختر الجنس</option>
                   <option>ذكر</option>
                   <option>أنثى</option>
                 </select>
@@ -119,14 +119,14 @@
             <div class="d-flex gap-2 align-items-center">
               <a
                 href="../../index.php"
-                class="nav-link back"
-                style="color: var(--main-color)"
+                class="nav-link back me-2"
+                style="color: #008ee0e5"
               >
                 رجوع <i class="fa-solid fa-chevron-left"></i>
               </a>
             </div>
           </div>
-          <a href="login.php" style="color:var(--main-color)">هل لديك حساب بالفعل </a>
+          <a href="login.php" style="color:#008ee0e5">هل لديك حساب بالفعل </a>
         </div>
       </form>
     </div>

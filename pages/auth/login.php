@@ -48,14 +48,14 @@
             <div class="d-flex gap-2 align-items-center">
               <a
                 href="../../index.php"
-                class="nav-link back"
-                style="color: var(--main-color)"
+                class="nav-link back me-2"
+                style="color: #008ee0e5"
               >
               رجوع <i class="fa-solid fa-chevron-left"></i>
             </a>
           </div>
           </div>
-          <a href="register.php" style="color:var(--main-color)">   انشاء حساب جديد </a>
+          <a href="register.php" style="color:#008ee0e5">   انشاء حساب جديد </a>
         </div>
       </form>
     </div>

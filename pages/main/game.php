@@ -15,12 +15,28 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="../../assets/css/pages/main/home.css" />
     <style>
+        body{
+            color: white !important;
+        }
         nav {
-            padding: 15px 20px;
-            position: static;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+          position: fixed;
+  isolation: isolate;
+  top: 10px;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: auto;
+  z-index: 9;
+  padding: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
         }
 
         .nav__bar {
@@ -65,11 +81,79 @@
             width: 100%;
             padding: 10px 15px;
             border-radius: 10px;
-            background-color: white;
+            background-color: #6EACDA;
         }
         .game-info{
-            background-color: #f3f4f6;
+            background-color:#03346E;
         }
+        .footer {
+  background-color: black;
+}
+
+.footer__container {
+  display: grid;
+  gap: 4rem 2rem;
+}
+
+.footer__col .section__description {
+  margin-block: 2rem;
+  color: rgba(255, 255, 255, 0.466);
+}
+
+.footer__col h4 {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: white;
+}
+
+.footer__links {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.footer__links a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.466);
+  transition: 0.3s;
+}
+
+.footer__links a:hover {
+  color: white;
+}
+
+.footer__socials {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer__socials img {
+  max-width: 25px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.footer__socials img:hover {
+  opacity: 1;
+}
+
+.footer__bar {
+  padding: 1rem;
+  font-size: 0.9rem;
+  color:rgba(255, 255, 255, 0.466);
+  text-align: center;
+}
+@media (width > 576px) {
+
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
     </style>
     <title>Document</title>
 </head>
@@ -79,7 +163,7 @@
         <nav>
             <div class="nav__bar d-flex align-items-center ">
                 <div class="logo">
-                    <a href="#">ساند طفلك</a>
+                    <a href="#">خطوة هِمَّة</a>
                 </div>
             </div>
 
@@ -91,13 +175,8 @@
             </div>
         </nav>
         <div class="header-title fs-2 col-12 mt-5 text-center mt-5 pt-5">
-            <img src="../../assets/media/imgs/paper.png" class="rr d-none d-lg-block" alt="" style="transform: rotate(0);
-    width: 20%;
-    height: 71px;
-    bottom: -11px;
-    right: 41%;
-    z-index: -2;" />
-            <span class="text-black"></span>
+
+            <span class="text-black" style="color: white !important;"></span>
         </div>
     </header>
 
@@ -144,6 +223,43 @@
   </div>
 </section>
     </section>
+    <footer class="footer pt-5 px-3 mt-5" id="contact">
+    <div class="section__container footer__container">
+      <div class="footer__col">
+        <div class="logo">
+          <a href="#home">خطوة هِمَّة</a>
+        </div>
+        <p class="section__description">
+          منصتنا هي الوجهة المثالية لتنمية ذكاء الأطفال وصقل مهاراتهم الفكرية
+          بطريقة ممتعة ومبتكرة. نقدم مجموعة واسعة من ألعاب الذكاء التفاعلية
+          المصممة لتحفيز عقول الأطفال وتعزيز التفكير النقدي والإبداعي،
+          بالإضافة إلى تطوير سرعة البديهة ومهارات التحليل وحل المشكلات. تهدف
+          منصتنا إلى تزويد الأطفال ببيئة تعليمية محفزة تجمع بين التعلم
+          والترفيه،
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4>روابط سريعة</h4>
+        <ul class="footer__links">
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#about">حول</a></li>
+          <li><a href="#service">الخدمات</a></li>
+          <li><a href="#contact">تواصل</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>تواصل معنا</h4>
+        <ul class="footer__links">
+          <li><a href="mail.com://omarwafeek09@gmail.com">omarwafeek09@gmail.com</a></li>
+        </ul>
+
+      </div>
+      <div class="footer__bar" style="width:100%;display:block;">
+        حقوق النشر © 2024 omar wafeek . جميع الحقوق محفوظة.
+      </div>
+
+  </div></footer>
     <script src="../../assets/js/tools/aos.js"></script>
     <script>
         AOS.init({});

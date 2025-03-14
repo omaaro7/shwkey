@@ -21,7 +21,7 @@
         <nav class="mt-3">
             <div class="nav__bar d-flex align-items-center gap-2">
                 <div class="logo">
-                    <a href="#">ساند طفلك</a>
+                    <a href="#">خطوة هِمَّة</a>
                 </div>
             </div>
 
@@ -33,14 +33,8 @@
             </div>
         </nav>
         <div class="header-title fs-2 col-12 mt-5 text-center">
-            <img src="../../assets/media/imgs/paper.png" class="rr d-none d-lg-block" alt="" style="transform: rotate(0);
-    width: 20%;
-    height: 71px;
-    bottom: -11px;
-    right: 41%;
-    z-index: -2;" />
             <img src="../../assets/media/imgs/r.png" class="rr d-none d-lg-block" alt="" />
-            <span class="text-black"></span>
+            <span class="text-white"></span>
         </div>
     </header>
     <section class="boxes mt-5 p-3 pt-5 col-12 d-flex flex-wrap align-items-center justify-content-center border-0">

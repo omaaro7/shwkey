@@ -21,17 +21,19 @@
     <link rel="stylesheet" href="../../assets/css/aos.css" />
     <link rel="stylesheet" href="../../assets/css/sweetalert2.css" />
     <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
+
     <link
       rel="stylesheet"
       href="../../assets/css/pages/main/home.css"
     />
+    
   </head>
   <body>
     <header class="header">
       <nav class="mt-3">
         <div class="nav__bar d-flex align-items-center gap-2">
           <div class="logo">
-            <a href="#">ساند طفلك</a>
+            <a href="#">خطوة هِمَّة</a>
           </div>
         </div>
 
@@ -53,12 +55,6 @@
       class="boxes mt-5 p-3 pt-5 col-12 d-flex flex-wrap align-items-center justify-content-center border-0"
     ></section>
     <section class="benifits col-12 mt-5 px-2 px-lg-4 pt-4">
-      <div class="title-box col-12">
-        <img src="../../assets/media/imgs/paper.png" alt="" />
-        <div class="sec-title col-12 text-center fs-2 mt-4">
-          فوائد <span>كل</span> نوع
-        </div>
-      </div>
 
       <div
         class="sec-container col-12 d-flex flex-column flex-lg-row justify-content-between align-items-center mt-4"
@@ -138,7 +134,7 @@
     </section>
     <section class="benifits col-12 mt-5 px-2 px-lg-4 pt-4">
       <div
-        class="sec-container col-12 d-flex flex-column flex-lg-row justify-content-between align-items-center mt-4"
+        class="sec-container col-12 d-flex flex-column flex-lg-row justify-content-between align-items-center mt-4" style="possition:relative;"
       >
         <div
           class="text col-12 col-lg-5"
@@ -212,7 +208,7 @@
             اليومية التي تتطلب تركيزًا دقيقًا..<br />
           </p>
           <p>
-            < تحفيز الدماغ وتحسين الإدراك ألعاب الذاكرة توفر تحديات عقلية
+             تحفيز الدماغ وتحسين الإدراك ألعاب الذاكرة توفر تحديات عقلية
             مستمرة، مما يساعد في تنشيط الدماغ وتحفيز الإدراك. من خلال المشاركة
             في هذه الألعاب، يتم تنمية المهارات المعرفية مثل التذكر، الإدراك
             البصري، والتمييز بين التفاصيل.
@@ -235,6 +231,43 @@
     
   </div>
 </section>
+<footer class="footer pt-5 px-3 mt-5" id="contact">
+    <div class="section__container footer__container">
+      <div class="footer__col">
+        <div class="logo">
+          <a href="#home">خطوة هِمَّة</a>
+        </div>
+        <p class="section__description">
+          منصتنا هي الوجهة المثالية لتنمية ذكاء الأطفال وصقل مهاراتهم الفكرية
+          بطريقة ممتعة ومبتكرة. نقدم مجموعة واسعة من ألعاب الذكاء التفاعلية
+          المصممة لتحفيز عقول الأطفال وتعزيز التفكير النقدي والإبداعي،
+          بالإضافة إلى تطوير سرعة البديهة ومهارات التحليل وحل المشكلات. تهدف
+          منصتنا إلى تزويد الأطفال ببيئة تعليمية محفزة تجمع بين التعلم
+          والترفيه،
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4>روابط سريعة</h4>
+        <ul class="footer__links">
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#about">حول</a></li>
+          <li><a href="#service">الخدمات</a></li>
+          <li><a href="#contact">تواصل</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>تواصل معنا</h4>
+        <ul class="footer__links">
+          <li><a href="mail.com://omarwafeek09@gmail.com">omarwafeek09@gmail.com</a></li>
+        </ul>
+
+      </div>
+      <div class="footer__bar" style="width:100%;display:block;">
+        حقوق النشر © 2024 omar wafeek . جميع الحقوق محفوظة.
+      </div>
+
+  </div></footer>
     <script src="../../assets/js/tools/aos.js"></script>
 
     <script>

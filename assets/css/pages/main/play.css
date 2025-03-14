@@ -2,6 +2,7 @@ body{
     padding: 0;
     margin: 0;
     background-color: var(--main-color);
+    color: white;
 }
 .points__box,.title span{
     background-color: var(--second-color);

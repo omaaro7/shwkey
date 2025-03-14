@@ -24,7 +24,7 @@
     <nav>
       <div class="nav__bar">
         <div class="logo">
-          <a href="#">ساند طفلك</a>
+          <a href="#">خطوة هِمَّة</a>
         </div>
         <div class="nav__menu__btn" id="menu-btn">
           <i class="fa-solid fa-bars"></i>
@@ -45,6 +45,8 @@
         وكيف <span>نساهم في دعمهم </span>؟
       </h1>
     </div>
+
+
   </header>
   <section
     class="col-12 first hint-container d-flex align-items-stretch justify-content-center justify-content-lg-between flex-wrap  px-3  py-4">
@@ -83,7 +85,6 @@
   </section>
   <section class="types col-12 mt-5 pt-5 px-1 px-lg-5">
     <div class="hint types-title col-12 text-center fs-2" data-aos="fade-down" data-aos-duration="700">
-      <img src="assets/media/imgs/paper.png" alt="">
       بعض أنواع <span>ذوي الهمم</span> وصفاتهم
     </div>
     <div class="types-list-container">
@@ -188,7 +189,6 @@
   </section>
   <section class="ways col-12 mt-5 pt-5">
     <div class="hint ways-title col-12 text-center fs-2" data-aos="fade-down" data-aos-duration="700">
-      <img src="assets/media/imgs/paper.png" alt="">
       فن التعامل مع <span>ذوي الهمم</span>!
     </div>
     <div
@@ -200,7 +200,7 @@
         <img src="assets/media/imgs/thinking.svg">
       </div>
       <div class="hint hint-video col-11 col-lg-7" data-aos="fade-down" data-aos-duration="600">
-        <iframe src="https://www.youtube.com/embed/9AySsQFa_Jk?si=bSqIgnHXlqEY0hKw" title="YouTube video player"
+        <iframe src="https://www.youtube.com/embed/QOZcILKXh_w?si=eUe1t2V9YxCyrrl_"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen width="100%"></iframe>
@@ -210,7 +210,6 @@
   </section>
   <section class="help col-12 mt-5 pt-5">
     <div class="hint help-title col-12 text-center fs-2" data-aos="fade-down" data-aos-duration="700">
-      <img src="assets/media/imgs/paper.png" alt="">
 
       كيف يمكننا مساعدة <span>ذوي الهمم <i class="fa-light fa-face-thinking"></i></span>؟
     </div>
@@ -254,7 +253,7 @@
     <div class="section__container footer__container">
       <div class="footer__col">
         <div class="logo">
-          <a href="#home">ساند طفلك</a>
+          <a href="#home">خطوة هِمَّة</a>
         </div>
         <p class="section__description">
           منصتنا هي الوجهة المثالية لتنمية ذكاء الأطفال وصقل مهاراتهم الفكرية
