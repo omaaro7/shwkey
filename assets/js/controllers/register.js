@@ -4,6 +4,15 @@ form.addEventListener("submit", async (e) => {
 
   let pass = document.querySelector(".pass");
   let repass = document.querySelector(".repass");
+  let photo = document.querySelector("#upload");
+
+  if (!photo.files.length) {
+    Swal.fire({
+      title: "Error",
+      text: "Please upload a photo",
+    });
+    return;
+  }
 
   if (pass.value.length < 8) {
     Swal.fire({
@@ -22,29 +31,26 @@ form.addEventListener("submit", async (e) => {
   }
 
   let inputs = document.querySelectorAll(".val");
-  let data = {
-    name: inputs[0].value,
-    date_birth: inputs[1].value,
-    type: inputs[2].value,
-    parent_name: inputs[3].value,
-    parent_data_birth: inputs[4].value,
-    parent_type: inputs[5].value,
-    parent_phonenumber: inputs[8].value,
-    user_name: inputs[6].value,
-    password: inputs[7].value,
-    stat: 0,
-    coins: 0,
-    level: 0,
-    finshed_games:"[]"
-  };
+  let formData = new FormData();
+  formData.append("name", inputs[0].value);
+  formData.append("date_birth", inputs[1].value);
+  formData.append("type", inputs[2].value);
+  formData.append("parent_name", inputs[3].value);
+  formData.append("parent_data_birth", inputs[4].value);
+  formData.append("parent_type", inputs[5].value);
+  formData.append("parent_phonenumber", inputs[8].value);
+  formData.append("user_name", inputs[6].value);
+  formData.append("password", inputs[7].value);
+  formData.append("stat", 0);
+  formData.append("coins", 0);
+  formData.append("level", 0);
+  formData.append("finshed_games", "[]");
+  formData.append("photo", photo.files[0]);
 
   try {
     const res = await fetch(`../../handlers/signUp.php`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+      body: formData,
     });
 
     if (!res.ok) {
@@ -70,7 +76,7 @@ form.addEventListener("submit", async (e) => {
         text: "User registered successfully!",
       }).then(() => {
         window.location.href = "../main/home.php";
-      })
+      });
     } else {
       Swal.fire({
         title: "Error",

@@ -1,5 +1,5 @@
-body{
-    padding: 0;
+body {
+  padding: 0;
   margin: 0;
   height: fit-content;
   width: 100%;
@@ -10,101 +10,208 @@ body{
   flex-direction: column;
   align-items: center;
 }
-header{
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-image: none;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    isolation: isolate;
-    top: 10px;
-    width: 60%;
-    max-width: var(--max-width);
-    margin: auto;
-    z-index: 9;
-    padding: 10px;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.05)
-    );
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    text-align: center;
-  }
-  
-  .nav__bar {
-    padding: 0;
-    background-color: transparent;
-  }
-  
-  .nav__menu__btn {
-    display: none;
-  }
-  
-  .nav__links {
-    padding: 0;
-    width: unset;
-    position: static;
-    transform: none;
-    flex-direction: row;
-    background-color: transparent;
-    color: black;
-  }
-  
-  .nav__btn {
-    display: block;
-  }
-  
-  .nav__links a::after {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 0;
-    transition: 0.3s;
-    transform-origin: left;
-  }
-  
-  .nav__links a:hover::after {
-    width: 100%;
-  }
-  
-  .logo a {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-  }
-  i{
-    color: white;
-  }
-  .profile-pic img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-  .profile-inf .profile-name{
-    color: white;
-    font-size: 18px;
-  } 
-  .profile-inf .post-date{
-      color: #6EACDA;
-      font-size: 14px;
-  }
-  .user-info .options button{
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: #ffffff;
-    font-size: 25px;
-  }
+header {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-image: none;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  isolation: isolate;
+  top: 10px;
+  width: 60%;
+  max-width: var(--max-width);
+  margin: auto;
+  z-index: 9;
+  padding: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.nav__bar {
+  padding: 0;
+  background-color: transparent;
+}
+
+.nav__menu__btn {
+  display: none;
+}
+
+.nav__links {
+  padding: 0;
+  width: unset;
+  position: static;
+  transform: none;
+  flex-direction: row;
+  background-color: transparent;
+  color: black;
+}
+
+.nav__btn {
+  display: block;
+}
+
+.nav__links a::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  transition: 0.3s;
+  transform-origin: left;
+}
+
+.nav__links a:hover::after {
+  width: 100%;
+}
+
+.logo a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+i {
+  color: white;
+}
+.add-post .container-add-post {
+  background-color: #03346e;
+  border: 1px solid rgba(255, 255, 255, 0.363);
+}
+.container-add-post .typing {
+  height: 40px;
+  background-color: #6eacda;
+  border-radius: 15px;
+  color: white;
+  transition: all 0.6s;
+  cursor: pointer;
+}
+.container-add-post .typing:hover {
+  background-color: #439add;
+}
+.profAndTyping {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.363);
+}
+.container-add-post .typing-box-container,.feelings-box-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background-color: #1616168a;
+  backdrop-filter: blur(10px);
+}
+.container-add-post .typing-box,.feelings-box {
+  background-color: #03346e;
+  border-radius: 20px;
+  position: relative;
+}
+.container-add-post .typing-box .closer ,.feelings-box-container .feelings-box .closer {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.container-add-post .typing-box .closer i ,.feelings-box-container .feelings-box .closer i{
+  color: #439add;
+  font-size: 25px;
+  cursor: pointer;
+}
+.container-add-post .typing-box .box-content textarea {
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: #439add;
+  font-size: 16px;
+  resize: none;
+  color: white;
+}
+.container-add-post .typing-box .box-content textarea::placeholder {
+  color: white;
+}
+.container-add-post .typing-box .box-content textarea:focus {
+  border: none;
+  outline: none;
+  background-color: #6eacda;
+}
+.container-add-post .typing-box .box-content label {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.container-add-post .typing-box .box-content .personaity-choises .choise,
+.container-add-post .typing-box .box-content .publish,
+.feelings-box-container .feelings-box .publish-feeling {
+  border: none;
+  background: #021526;
+  transition: all 0.5s;
+}
+.container-add-post .typing-box .box-content .publish {
+  background-color: #439add;
+}
+.container-add-post .typing-box .box-content .personaity-choises .choise:hover,
+.container-add-post .typing-box .box-content .publish:hover,
+.container-add-post .typing-box .box-content label:hover {
+  opacity: 0.7;
+}
+.profile-pic img,
+.profAndTyping .prof img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.profile-inf .profile-name {
+  color: white;
+  font-size: 18px;
+}
+.profile-inf .post-date {
+  color: #6eacda;
+  font-size: 14px;
+}
+.user-info .options button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 25px;
+}
+.post-content .text {
+  font-size: 17px;
+  color: white;
+}
+.post-content .post-img img {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  border-radius: 20px;
+}
+.activity-center {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.363);
+  padding-bottom: 10px;
+  color: white;
+  gap: 10px;
+}
+.line-options i {
+  font-size: 20px;
+}
+.line-options .option-text {
+  color: #6eacda;
+  font-size: 17px;
+}

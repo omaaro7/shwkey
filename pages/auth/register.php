@@ -114,6 +114,10 @@
               </div>
             </div>
           </div>
+          <div class="upload-photo">
+            <label for="upload" class="px-2 rounded-2 text-white fs-5" style="background-color:rgb(111 149 198);">اختر صورة ملفك</label>
+            <input type="file" id="upload" class="d-none upload">
+          </div>
           <div class="buttons col-12 d-flex align-items-center ">
             <button type="submit">تسجيل</button>
             <div class="d-flex gap-2 align-items-center">

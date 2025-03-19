@@ -4,12 +4,34 @@
 require_once '../config/conn.php';
 
 // Function to fetch data from a specified table with optional conditions
-function fetchData($tableName, $conditions, $conn) {
+function fetchData($tableName, $conditions, $conn, $isAdmin = false) {
     // Sanitize the table name to prevent SQL injection
     $tableName = preg_replace('/[^a-zA-Z0-9_]/', '', $tableName);
 
-    // Build the query
-    $query = "SELECT * FROM `$tableName`  ";
+    // Define columns to exclude for 'users' table unless admin_token is provided
+    $excludedColumns = (!$isAdmin && $tableName === 'users') ? ['password', 'token',"parent_phonenumber"] : [];
+
+    // Fetch column names from the table
+    $columnsResult = $conn->query("SHOW COLUMNS FROM `$tableName`");
+    if (!$columnsResult) {
+        die("Error fetching columns: " . $conn->error);
+    }
+
+    $columns = [];
+    while ($row = $columnsResult->fetch_assoc()) {
+        if (!in_array($row['Field'], $excludedColumns)) {
+            $columns[] = "`" . $row['Field'] . "`";
+        }
+    }
+    $columnsResult->free();
+
+    // If no columns are left after filtering
+    if (empty($columns)) {
+        die("Error: No valid columns to fetch.");
+    }
+
+    // Build the query with selected columns
+    $query = "SELECT " . implode(", ", $columns) . " FROM `$tableName`";
 
     // Add conditions if provided
     if (!empty($conditions)) {
@@ -37,10 +59,13 @@ function fetchData($tableName, $conditions, $conn) {
 if (isset($_GET['table'])) {
     $tableName = $_GET['table']; // Dynamic table name from request
 
+    // Check for admin_token
+    $isAdmin = isset($_GET['admin_token']) && $_GET['admin_token'] === 'myadmin';
+
     // Build conditions array from request parameters
     $conditions = [];
     foreach ($_GET as $key => $value) {
-        if ($key !== 'table') {
+        if ($key !== 'table' && $key !== 'admin_token') {
             $sanitizedKey = preg_replace('/[^a-zA-Z0-9_]/', '', $key);
             $sanitizedValue = $conn->real_escape_string($value);
             $conditions[] = "`$sanitizedKey` = '$sanitizedValue'";
@@ -48,7 +73,7 @@ if (isset($_GET['table'])) {
     }
 
     // Fetch the data
-    $data = fetchData($tableName, $conditions, $conn);
+    $data = fetchData($tableName, $conditions, $conn, $isAdmin);
 
     // Print the fetched data as JSON
     header('Content-Type: application/json');
