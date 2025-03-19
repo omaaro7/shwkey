@@ -8,6 +8,7 @@ $data = $_POST;
 $token = $data['token'] ?? '';
 $postText = $conn->real_escape_string($data['post_text'] ?? '');
 $visibility = $conn->real_escape_string($data['visibility'] ?? 'public');  // Default to "public"
+$reaction = $conn->real_escape_string($data['reaction'] ?? '0'); // Default to 0 (no reaction)
 
 // Ensure token is provided
 if (!$token) {
@@ -51,19 +52,20 @@ try {
         }
     }
 
-    // Insert the post into the database
+    // Insert the post into the database with reaction support
     $stmt = $conn->prepare("
-        INSERT INTO posts (user_id, user_name, profile_path, post_text, image_path, likes, comments, shares, date_added, num_edits, visibility)
-        VALUES (?, ?, ?, ?, ?, 0, 0, 0, NOW(), 0, ?)
+        INSERT INTO posts (user_id, user_name, profile_path, post_text, image_path, likes, comments, shares, date_added, num_edits, visibility, reaction)
+        VALUES (?, ?, ?, ?, ?, 0, 0, 0, NOW(), 0, ?, ?)
     ");
-    $stmt->bind_param("isssss", $userId, $userName, $profilePath, $postText, $imagePath, $visibility);
+    $stmt->bind_param("isssssi", $userId, $userName, $profilePath, $postText, $imagePath, $visibility, $reaction);
 
     if ($stmt->execute()) {
         echo json_encode([
             "status" => "success",
             "message" => "Post created successfully",
             "user_id" => $userId,
-            "visibility" => $visibility
+            "visibility" => $visibility,
+            "reaction" => $reaction
         ]);
     } else {
         echo json_encode(["status" => "error", "message" => "Failed to create post"]);

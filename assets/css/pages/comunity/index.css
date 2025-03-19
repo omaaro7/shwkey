@@ -197,10 +197,11 @@ i {
   color: white;
 }
 .post-content .post-img img {
-  width: 100%;
+  width: auto;
   height: auto;
-  max-height: 350px;
+  max-height: 320px;
   border-radius: 20px;
+
 }
 .activity-center {
   border-bottom: 1px solid rgba(255, 255, 255, 0.363);
