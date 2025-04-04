@@ -1,5 +1,6 @@
 import getCookieValue from "../../assets/js/modules/getCookies.js";
 let inf = 0;
+
 window.onload = async () => {
   let res = await fetch(
     `../../handlers/getData.php?table=users&token=${getCookieValue("token")}`
@@ -7,6 +8,7 @@ window.onload = async () => {
   let data = await res.json();
   inf = data[0];
 };
+
 // Custom page
 let colors = [
   {
@@ -69,19 +71,19 @@ let colors = [
     "choices": ["أحمر داكن", "وردي", "رمادي"],
     "correct_answer": "أحمر داكن"
   }
-]
+];
 
-let boxes = document.querySelectorAll(".box")
-let ind = Math.floor(Math.random() * 9)
-let chs = document.querySelectorAll(".choies")
-boxes[0].style.background = `${colors[ind].colors[0]}`
-boxes[1].style.background = `${colors[ind].colors[1]}`
+let boxes = document.querySelectorAll(".box");
+let ind = Math.floor(Math.random() * 9);
+let chs = document.querySelectorAll(".choies");
+boxes[0].style.background = `${colors[ind].colors[0]}`;
+boxes[1].style.background = `${colors[ind].colors[1]}`;
 
 console.log(colors[ind]);
 
-chs.forEach((ele , index) => {
-  ele.textContent = colors[ind].choices[index]
-})
+chs.forEach((ele, index) => {
+  ele.textContent = colors[ind].choices[index];
+});
 
 // Check for SpeechRecognition support
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -91,63 +93,62 @@ if (!SpeechRecognition) {
 } else {
   const recognition = new SpeechRecognition();
   recognition.lang = 'ar-EG'; // Arabic language (Egyptian dialect)
-  recognition.continuous = true; // Keep listening continuously
-  recognition.interimResults = false; // Final results only
+  recognition.continuous = true;
+  recognition.interimResults = false;
 
-  // Add click event listener to start recognition
   recognition.start();
   console.log('Speech recognition started...');
 
-  recognition.onresult = async(event) => {
+  recognition.onresult = async (event) => {
     let uP = +inf.coins;
     let poients = +localStorage.getItem("gamePoints");
     let finshed = JSON.parse(inf.finshed_games);
-    // Get the recognized command
-    let command = event.results[event.results.length - 1][0].transcript.trim();
 
-    // Remove any non-Arabic characters
+    let command = event.results[event.results.length - 1][0].transcript.trim();
     command = command.replace(/[^\u0600-\u06FF\s]/g, '');
 
-    // Remove the question mark if it's at the end
     if (command.endsWith('؟')) {
-      command = command.slice(0, -1); // Remove last character (the question mark)
+      command = command.slice(0, -1);
     }
 
     console.log('Recognized command:', command);
 
-    // Check if the command includes the correct answer
-    if (command.includes(colors[ind].correct_answer)) {
-      console.log(true);
-  let res = await fetch(
-        `../../handlers/putData.php?table=users&id=${
-          inf.id
-        }&token=${getCookieValue("token")}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            coins: uP + poients,
-            finshed_games: JSON.stringify(finshed),
-          }),
-        }
-      );
+    // ✅ تحقق إن الكلمة من ضمن الاختيارات
+    if (colors[ind].choices.includes(command)) {
+      if (command == colors[ind].correct_answer) {
+        finshed.push(localStorage.getItem("gameId"))
+        console.log(true);
+        let res = await fetch(
+          `../../handlers/putData.php?table=users&id=${inf.id}&token=${getCookieValue("token")}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              coins: uP + poients,
+              finshed_games: JSON.stringify(finshed),
+            }),
+          }
+        );
+        Swal.fire({
+          icon: 'success',
+          title: `مبروك لقد ربحت ${localStorage.getItem("gamePoints")}`
+        }).then(() => window.parent.location = "../../pages/main/play.php");
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: `حظ اوفر`
+        }).then(() => {
+          window.parent.location = "../../pages/main/home.php";
+        });
+      }
+    } else {
       Swal.fire({
-        icon: 'success',
-        title:`مبروك لقد ربحت ${localStorage.getItem("gamePoints")}`
-
-      })
-    }
-    // Check if the command includes any of the choices
-    if (command.includes(colors[ind].choices[0]) || command.includes(colors[ind].choices[1]) || command.includes(colors[ind].choices[2])) {
-      Swal.fire({
-        icon: 'error',
-        title:`حظ اوفر`
-
-      }).then(() => {
-        window.parent.location = "../../pages/main/home.php"
-      })
+        icon: 'warning',
+        title: 'من فضلك اختر إجابة من الخيارات الظاهرة فقط',
+        text: `الكلمة التي قلتها: "${command}" غير موجودة ضمن الخيارات.`
+      });
     }
   };
 
@@ -157,11 +158,13 @@ if (!SpeechRecognition) {
       alert('Microphone access is not allowed. Please enable it.');
     }
   };
-  let micDiv = document.querySelector(".mic-box")
+
+  let micDiv = document.querySelector(".mic-box");
   micDiv.addEventListener('click', () => {
     recognition.start();
-    console.log('Speech recognition started...');
+    console.log('Speech recognition restarted...');
   });
+
   recognition.onend = () => {
     console.log('Speech recognition stopped. Click on the mic to restart.');
   };
