@@ -20,7 +20,7 @@ body {
   text-align: center;
   transition: all 0.6s;
 }
-.answer:hover {
+.answer:hover,.answer.active {
   background-color: rgb(37 55 204);
   color: white;
   cursor: pointer;
@@ -62,13 +62,16 @@ body {
   height: 30px;
   border: 2px solid rgb(46, 55, 77);
   padding: 10px;
-  background: rgba(176, 152, 152, 0.08);
+  background: rgba(175, 165, 165, 0.274);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(9.7px);
   -webkit-backdrop-filter: blur(9.7px);
-  border: 1px solid rgba(176, 152, 152, 0.3);
-  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.685);
+  border-radius:5px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.q-num.active{
+  background-color: rgb(30, 134, 194);
 }
