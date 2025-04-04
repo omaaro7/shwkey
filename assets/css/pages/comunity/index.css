@@ -106,7 +106,11 @@ i {
 .profAndTyping {
   border-bottom: 1px solid rgba(255, 255, 255, 0.363);
 }
-.container-add-post .typing-box-container,.feelings-box-container {
+.container-add-post .typing-box-container,
+.feelings-box-container,.add-comment-container,
+.share-box-container,
+.comments-viewer-container,
+.addd-quistitionair-container {
   position: fixed;
   top: 0;
   right: 0;
@@ -118,22 +122,35 @@ i {
   background-color: #1616168a;
   backdrop-filter: blur(10px);
 }
-.container-add-post .typing-box,.feelings-box {
+.container-add-post .typing-box,
+.feelings-box,.add-comment,
+.share-box,.comments-viewer,
+.addd-quistitionair {
   background-color: #03346e;
   border-radius: 20px;
   position: relative;
 }
-.container-add-post .typing-box .closer ,.feelings-box-container .feelings-box .closer {
+.container-add-post .typing-box .closer,
+.feelings-box-container .feelings-box .closer
+,.add-comment .closer,
+.share-box .closer ,.comments-viewer .closer,
+.addd-quistitionair .closer{
   position: absolute;
   top: 15px;
   right: 15px;
 }
-.container-add-post .typing-box .closer i ,.feelings-box-container .feelings-box .closer i{
+.container-add-post .typing-box .closer i,
+.feelings-box-container .feelings-box .closer i,
+.add-comment .closer i,
+.share-box .closer i,
+.comments-viewer .closer i,
+.addd-quistitionair .closer i {
   color: #439add;
   font-size: 25px;
   cursor: pointer;
 }
-.container-add-post .typing-box .box-content textarea {
+.container-add-post .typing-box .box-content textarea,
+.add-comment textarea {
   height: 150px;
   padding: 12px 20px;
   box-sizing: border-box;
@@ -143,10 +160,12 @@ i {
   resize: none;
   color: white;
 }
-.container-add-post .typing-box .box-content textarea::placeholder {
+.container-add-post .typing-box .box-content textarea::placeholder,
+.add-comment textarea::placeholder {
   color: white;
 }
-.container-add-post .typing-box .box-content textarea:focus {
+.container-add-post .typing-box .box-content textarea:focus,
+.add-comment textarea:focus {
   border: none;
   outline: none;
   background-color: #6eacda;
@@ -156,20 +175,82 @@ i {
   cursor: pointer;
   transition: all 0.5s;
 }
+.social{
+  width: 120px;
+  height: 120px ;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.social:hover{
+  opacity: 0.7;
+}
+.social-1{
+  background-color: rgb(13, 168, 78);
+}
+.social-2{
+  background-color: rgb(7, 92, 204);
+}
+.social-3{
+  background:linear-gradient(rgb(226, 4, 97),rgb(125, 50, 211))
+}
+.social-4{
+  background:linear-gradient(rgb(4, 126, 226),rgb(125, 50, 211))
+}
+.social-5{
+  background:linear-gradient(rgb(226, 4, 97),rgb(125, 50, 211))
+}
+.social-6{
+  background-color: rgb(192, 192, 14);
+}
+.link-copy-box{
+  background-color: #878a8d;
+  color: white;
+}
+.copy{
+  background-color: #5d88b4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.copy:hover{
+  opacity: 0.7;
+}
 .container-add-post .typing-box .box-content .personaity-choises .choise,
 .container-add-post .typing-box .box-content .publish,
-.feelings-box-container .feelings-box .publish-feeling {
+.feelings-box-container .feelings-box .publish-feeling,.save-quistitionaire {
   border: none;
   background: #021526;
   transition: all 0.5s;
+  color: white;
 }
-.container-add-post .typing-box .box-content .publish {
+.container-add-post .typing-box .box-content .publish,.send-comment {
   background-color: #439add;
 }
 .container-add-post .typing-box .box-content .personaity-choises .choise:hover,
 .container-add-post .typing-box .box-content .publish:hover,
-.container-add-post .typing-box .box-content label:hover {
+.container-add-post .typing-box .box-content label:hover,.send-comment:hover,
+.save-quistitionaire:hover {
   opacity: 0.7;
+}
+.post {
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 .profile-pic img,
 .profAndTyping .prof img {
@@ -197,11 +278,10 @@ i {
   color: white;
 }
 .post-content .post-img img {
-  width: auto;
+  width: 100%;
   height: auto;
-  max-height: 320px;
+  max-height: fit-content;
   border-radius: 20px;
-
 }
 .activity-center {
   border-bottom: 1px solid rgba(255, 255, 255, 0.363);
@@ -215,4 +295,61 @@ i {
 .line-options .option-text {
   color: #6eacda;
   font-size: 17px;
+}
+.comment{
+  background-color: #bbddff;
+  min-width: 50%;
+  max-width: 85%;
+  border-radius: 10px;
+  color: #0075ff;
+}
+.comment .user-info{
+  color: #03346e;
+}
+.comment .user-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.comment .comment-img img{
+  max-height: 320px;
+  border-radius: 10px;
+}
+.quistisionair-title-box .q-title,.q-option{
+  background-color: #439add;
+  color: white;
+  font-size: 20px;
+  border: none;
+  outline: none;
+}
+.quistisionair-title-box .q-title::placeholder,.q-option::placeholder{
+  color: white;
+}
+.quistisionair-title-box .q-title:focus,.q-option:focus{
+  background-color: #0075ff;
+}
+.add-option{
+  width: fit-content;
+  padding: 5px 15px;
+  background-color: #0075ff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.add-option:hover{
+  background-color: #70a3cf;
+}
+.choise{
+  background-color: #eff9ff;
+  color: black;
+  border-radius: 10px;
+}
+.choise i{
+  font-size: 19px;
+  color: rgb(209, 31, 31);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.choise i:hover{
+  color: #ff4f4f;
 }

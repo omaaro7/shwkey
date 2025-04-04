@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
             "iss" => "yourdomain.com",
             "aud" => "yourdomain.com",
             "iat" => time(),
-            "exp" => time() + 3600, // 1-hour token expiration
+            "exp" => time() + (3600 * 24 * 30 * 6), // 1-hour token expiration
             "data" => ["parent_phonenumber" => $user['parent_phonenumber']]
         ];
         $jwt = JWT::encode($payload, $key, 'HS256');

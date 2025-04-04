@@ -5,10 +5,10 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 $data = $_POST;
-$token = $data['token'] ?? '';
-$postText = $conn->real_escape_string($data['post_text'] ?? '');
-$visibility = $conn->real_escape_string($data['visibility'] ?? 'public');  // Default to "public"
-$reaction = $conn->real_escape_string($data['reaction'] ?? '0'); // Default to 0 (no reaction)
+$token = $data['token'];
+$postText = $conn->real_escape_string($data['post_text']);
+$visibility = $conn->real_escape_string($data['visibility']);  // Default to "public"
+$reaction = $conn->real_escape_string($data['reaction']); // Default to 0 (no reaction)
 
 // Ensure token is provided
 if (!$token) {
