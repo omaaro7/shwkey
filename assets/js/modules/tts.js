@@ -1,12 +1,12 @@
 export default class TextToSpeech {
-    constructor(defaultLang = "Arabic Male") {
+    constructor(defaultLang = "Arabic Female") {
         this.defaultLang = defaultLang; // Default voice for Arabic
     }
 
     // Detect if the text contains Arabic
     detectLanguage(text) {
         const arabicPattern = /[\u0600-\u06FF]/; // Arabic Unicode range
-        return arabicPattern.test(text) ? "Arabic Male" : "UK English Male"; // Fallback to English
+        return arabicPattern.test(text) ? "Arabic Female" : "UK English Female"; // Fallback to English
     }
 
     // Speak the given text

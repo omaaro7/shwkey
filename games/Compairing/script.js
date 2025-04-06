@@ -1,3 +1,16 @@
+import getCookieValue from "../../assets/js/modules/getCookies.js";
+let inf = 0;
+
+window.onload = async () => {
+  let res = await fetch(
+    `../../handlers/getData.php?table=users&token=${getCookieValue("token")}`
+  );
+  let data = await res.json();
+  inf = data[0];
+};
+let sender = document.querySelector(".send-answers");
+
+//////////////////////////////////////////////////////////////////
 const questions = [
   {
     question: "أي عدد أكبر؟ 5 أم 1؟",
@@ -126,6 +139,9 @@ setNumsAndImgs(numbers);
       imgs_containers[1].innerHTML = "";
       clickers.forEach((clicker) => clicker.classList.remove("active"));
       e.target.classList.add("active");
+      answersRes.forEach((it) => {
+        clickers[it.q_index].classList.add("active");
+      });
       quistition.textContent = questions[index].question;
       for (let i = 0; i < answers.length; i++) {
         answers[i].textContent = questions[index].choices[i];
@@ -193,11 +209,63 @@ setNumsAndImgs(numbers);
 
       console.log(answersRes);
       aplQuests = answersRes.length;
-      vals[2].textContent = aplQuests
+      unAplQuest = questionsLenght - aplQuests;
+      vals[2].textContent = aplQuests;
+      vals[3].textContent = unAplQuest;
     });
   });
 })();
-
+//####################################################################################
+//send answers
+(() => {
+  sender.addEventListener("click", async (e) => {
+    let grade = 0;
+    answersRes.map((ele, index) => {
+      if (ele.state == true) {
+        grade++;
+      }
+    });
+    Swal.fire({
+      title: "هل انت متأكد",
+      text: "سيتم تسليم اجاباتاك اذا وافقت",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "لا",
+      confirmButtonText: "موافق",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        let finshed = JSON.parse(inf.finshed_games);
+        let coins = +inf.coins;
+        finshed.push(localStorage.getItem("gameId"));
+        let res = await fetch(
+          `../../handlers/putData.php?table=users&id=${
+            inf.id
+          }&token=${getCookieValue("token")}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              coins: coins + grade,
+              finshed_games: JSON.stringify(finshed),
+            }),
+          }
+        ).then(() => {
+          Swal.fire({
+            title: ` تم تسليم اجاباتاك بنجاح وحصلت على  ${grade} نقطة`,
+            icon: "success",
+          }).then(() => {
+            window.parent.location = "../../pages/main"
+          })
+        })
+      }
+    });
+  });
+})();
+//####################################################################################
 //helpers
 function setNumsAndImgs(numbers) {
   let randomNumber = Math.floor(Math.random() * 5) + 1;
@@ -212,3 +280,207 @@ function setNumsAndImgs(numbers) {
     }
   });
 }
+// ################### التعرف على الصوت ###################
+window.addEventListener("load", () => {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert("المتصفح لا يدعم التعرف على الصوت");
+    return;
+  }
+
+  const arabicToNumber = {
+    واحد: "1",
+    "١": "1",
+    1: "1",
+    اثنين: "2",
+    اتنين: "2",
+    "٢": "2",
+    2: "2",
+    ثلاثة: "3",
+    ثلاثه: "3",
+    تلاتة: "3",
+    ثلاثه: "3",
+    ثلاثه: "3",
+    ثلاثه: "3",
+    "٣": "3",
+    3: "3",
+    أربعة: "4",
+    اربعة: "4",
+    اربعه: "4",
+    "٤": "4",
+    4: "4",
+    خمسة: "5",
+    خمسه: "5",
+    "٥": "5",
+    5: "5",
+    ستة: "6",
+    سته: "6",
+    "٦": "6",
+    6: "6",
+    سبعة: "7",
+    سبعه: "7",
+    "٧": "7",
+    7: "7",
+    تمانية: "8",
+    ثمانية: "8",
+    "٨": "8",
+    8: "8",
+    تسعة: "9",
+    تسعه: "9",
+    "٩": "9",
+    9: "9",
+    عشرة: "10",
+    "١٠": "10",
+    10: "10",
+    حداشر: "11",
+    "إحدى عشر": "11",
+    "١١": "11",
+    11: "11",
+    اتناشر: "12",
+    "اثنا عشر": "12",
+    "١٢": "12",
+    12: "12",
+    تلتاشر: "13",
+    "ثلاثة عشر": "13",
+    "١٣": "13",
+    13: "13",
+    اربعتاشر: "14",
+    "أربعة عشر": "14",
+    "١٤": "14",
+    14: "14",
+    خمستاشر: "15",
+    "خمسة عشر": "15",
+    "١٥": "15",
+    15: "15",
+  };
+
+  const recognition = new SpeechRecognition();
+  recognition.lang = "ar-EG"; // اللغة العربية المصرية
+  recognition.continuous = true;
+  recognition.interimResults = false;
+
+  recognition.onresult = (event) => {
+    const transcript =
+      event.results[event.results.length - 1][0].transcript.trim();
+    console.log("🗣 الكلام اللي اتقال:", transcript);
+
+    // أوامر التأكيد
+    if (
+      transcript.includes("موافق") ||
+      transcript.includes("تمام") ||
+      transcript.includes("اكيد") ||
+      transcript.includes("متأكد")
+    ) {
+      const confirmBtn = document.querySelector(".swal2-confirm");
+      if (confirmBtn) {
+        confirmBtn.click();
+        console.log("✔ تم الضغط على موافق");
+      } else {
+        console.log("⚠ لا يوجد زر موافق");
+      }
+      return;
+    }
+
+    if (
+      transcript.includes("لا") ||
+      transcript.includes("متبعتش") ||
+      transcript.includes("مخلصتش") ||
+      transcript.includes("هكمل")
+    ) {
+      const cancelBtn = document.querySelector(".swal2-cancel");
+      if (cancelBtn) {
+        cancelBtn.click();
+        console.log("✔ تم الضغط على لا");
+      } else {
+        console.log("⚠ لا يوجد زر لا");
+      }
+      return;
+    }
+
+    // أوامر الإرسال
+    if (
+      transcript.includes("حفظ") ||
+      transcript.includes("إرسال") ||
+      transcript.includes("سلم") ||
+      transcript.includes("ارسال") ||
+      transcript.includes("ابعت") ||
+      transcript.includes("خلصت")
+    ) {
+      if (sender) {
+        sender.click();
+        console.log("✔ تم الضغط على زر الإرسال");
+      } else {
+        console.log("⚠ لا يوجد زر للإرسال");
+      }
+      return;
+    }
+
+    // تقسيم الكلام إلى كلمات منفصلة والبحث عن رقم مطابق
+    const words = transcript.split(/\s+/);
+    let matchedNumber = null;
+    for (const word of words) {
+      if (arabicToNumber[word]) {
+        matchedNumber = arabicToNumber[word];
+        break;
+      }
+    }
+    if (!matchedNumber) return;
+
+    // لو الكلام يحتوي على "سؤال" أو "رقم"، نعتبره طلب فتح سؤال
+    if (transcript.includes("سؤال") || transcript.includes("رقم")) {
+      const questionBtn = document.querySelector(
+        `.q-num[data-qu="${matchedNumber}"]`
+      );
+      if (questionBtn) {
+        questionBtn.click();
+        console.log(`✔ تم الضغط على السؤال رقم ${matchedNumber}`);
+      } else {
+        console.log(`⚠ لا يوجد سؤال برقم ${matchedNumber}`);
+      }
+    } else {
+      // لو الرقم بين 1 و 4 نعتبره إجابة، وإلا نعتبره سؤال
+      if (parseInt(matchedNumber) >= 1 && parseInt(matchedNumber) <= 4) {
+        const answerBtn = document.querySelector(
+          `.answer[data-an="${matchedNumber}"]`
+        );
+        if (answerBtn) {
+          answerBtn.click();
+          console.log(`✔ تم الضغط على الاختيار رقم ${matchedNumber}`);
+        } else {
+          console.log(`⚠ لا يوجد اختيار برقم ${matchedNumber}`);
+        }
+      } else {
+        const questionBtn = document.querySelector(
+          `.q-num[data-qu="${matchedNumber}"]`
+        );
+        if (questionBtn) {
+          questionBtn.click();
+          console.log(`✔ تم الضغط على السؤال رقم ${matchedNumber}`);
+        } else {
+          console.log(`⚠ لا يوجد سؤال برقم ${matchedNumber}`);
+        }
+      }
+    }
+  };
+
+  recognition.onerror = (event) => {
+    console.error("❌ خطأ في التعرف على الصوت:", event.error);
+    if (
+      event.error === "not-allowed" ||
+      event.error === "service-not-allowed"
+    ) {
+      alert("يرجى السماح باستخدام المايكروفون");
+    } else {
+      recognition.stop();
+      setTimeout(() => recognition.start(), 2000);
+    }
+  };
+
+  recognition.onend = () => {
+    setTimeout(() => recognition.start(), 1000);
+  };
+
+  recognition.start(); // نبدأ التسجيل أول ما الصفحة تفتح
+});

@@ -71,7 +71,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .q-num.active{
   background-color: rgb(30, 134, 194);
+}
+.send-answers{
+  background-color: rgb(81, 114, 202);
+  transition: all 0.5s;
+}
+.send-answers:hover{
+  background-color: rgb(88, 164, 207);
+  cursor: pointer;
 }
