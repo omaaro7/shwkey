@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #00a3a3;
+  --primary-color-dark: #0a7979;
+  --text-dark: #0c0a09;
+  --text-light: #78716c;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -95,14 +104,21 @@ body {
    color: white;
    border: 2px solid #7894ac;
   }
+  .course-title{
+    min-height: 50px ;
+    max-height: fit-content;
+  }
   .course-img img{
     width: 100%;
+    height: 300px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
   }
   .course-discription{
     color: rgba(255, 255, 255, 0.541);
     font-size: 14px;
+    min-height: 50px;
+    max-height: fit-content;
   }
   .separetor{
     height: 1px ;
@@ -114,4 +130,71 @@ body {
   }
   button.open:hover{
     background-color: #192c3d73;
+  }
+  .footer {
+    background-color: black;
+  }
+  
+  .footer__container {
+    display: grid;
+    gap: 4rem 2rem;
+  }
+  
+  .footer__col .section__description {
+    margin-block: 2rem;
+    color: rgba(255, 255, 255, 0.466);
+  }
+  
+  .footer__col h4 {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+  }
+  
+  .footer__links {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .footer__links a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.466);
+    transition: 0.3s;
+  }
+  
+  .footer__links a:hover {
+    color: white;
+  }
+  
+  .footer__socials {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .footer__socials img {
+    max-width: 25px;
+    opacity: 0.8;
+    transition: 0.3s;
+  }
+  
+  .footer__socials img:hover {
+    opacity: 1;
+  }
+  
+  .footer__bar {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color:rgba(255, 255, 255, 0.466);
+    text-align: center;
+  }
+  @media (width > 576px) {
+  
+    .footer__container {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
