@@ -2,6 +2,12 @@ import getCookieValue from "../../assets/js/modules/getCookies.js";
 let inf = 0;
 
 window.onload = async () => {
+  Swal.fire({
+    icon:"warning",
+    title:"تنبيهات ",
+    html:"<h5>لتغير السؤال قل سؤال وبعدها رقم السؤال<h5><br><h5>لتغير الاجابة قل   رقم الاجابة<h5>"
+    
+  })
   let res = await fetch(
     `../../handlers/getData.php?table=users&token=${getCookieValue("token")}`
   );

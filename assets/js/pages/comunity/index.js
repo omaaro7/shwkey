@@ -111,6 +111,20 @@ let feels = [
       } catch (error) {
         console.error("Error during fetch:", error);
       }
+      let formData = new FormData();
+      formData.append("token", userToken);
+      formData.append("post_text", "");
+      formData.append("visibility", 3);
+      formData.append("reaction", -1);
+      try {
+        const response = await fetch("../../handlers/upload-post.php", {
+          method: "POST",
+
+          body: formData,
+        });
+      } catch (error) {
+        console.error("Error during fetch:", error);
+      }
     }
   });
 })();
@@ -262,7 +276,7 @@ async function showPosts() {
       userName = "Unknown";
     }
 
-    if (ele.reaction == -1 && ele.is_quistitionair == 0) {
+    if (ele.reaction == -1 && +ele.visibility !== 3) {
       postsContainer.innerHTML += `
         <div class="post col-12 mt-5" data-postid="${ele.id}">
             <div class="user-info col-11 d-flex justify-content-between align-items-center">
@@ -305,7 +319,7 @@ async function showPosts() {
         </div>
       `;
     }
-    if (+ele.reaction !== -1 && ele.is_quistitionair == 0) {
+    if (+ele.reaction !== -1 && +ele.visibility !== 3) {
       postsContainer.innerHTML += `
          <div class="post col-12 mt-5" data-postid="${ele.id}">
             <div class="user-info col-11 d-flex justify-content-between align-items-center">
@@ -352,6 +366,9 @@ async function showPosts() {
             </div>
                 </div>
        `;
+    }
+    if (+ele.reaction == -1 && +ele.visibility == 3 && ele.post_text == "") {
+      postsContainer.innerHTML += `<div></div>`
     }
   });
 }

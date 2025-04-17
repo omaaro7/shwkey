@@ -13,18 +13,25 @@ window.onload = async () => {
 bt.addEventListener("click", (e) => {
   e.preventDefault();
   e.target.remove();
-  ifr.style.visibility = "hidden";
+  ifr.remove();
   box.style.visibility = "visible";
 });
 let ans = document.querySelectorAll(".answer");
 ans.forEach((e) => {
   e.addEventListener("click", async (e) => {
     e.preventDefault();
+    console.log(inf);
+    
     let uP = +inf.coins;
+    
     let poients = +localStorage.getItem("gamePoints");
     let finshed = JSON.parse(inf.finshed_games);
     finshed.push(localStorage.gameId);
+    console.log(e.target);
+    
     if (e.target.dataset.cor == "1") {
+      console.log("tttttttttt");
+      
       let res = await fetch(
         `../../handlers/putData.php?table=users&id=${
           inf.id
@@ -37,16 +44,15 @@ ans.forEach((e) => {
           body: JSON.stringify({
             coins: uP + poients,
             finshed_games: JSON.stringify(finshed),
-          }),
+          })
         }
-      );
-      let data = await res.json();
-      Swal.fire({
-        title: `تهانينا لقد ربحت ${localStorage.getItem("gamePoints")} نقطة`,
-
-        icon: "success",
-      }).then(() => (window.location = "../../pages/main/home.php"));
-    } else {
+      )
+        Swal.fire({
+          title: `تهانينا لقد ربحت ${localStorage.getItem("gamePoints")} نقطة`,
+          icon: "success",
+        }).then(() =>{
+        })
+    } if (e.target.dataset.cor !== "1") {
       let res = await fetch(
         `../../handlers/putData.php?table=users&id=${
           inf.id
@@ -62,11 +68,12 @@ ans.forEach((e) => {
         }
       );
       let data = await res.json();
+      Swal.fire({
+        title: "حظ أوفر",
+  
+        icon: "error",
+      }).then(() => (console.log("err")
+      ));
     }
-    Swal.fire({
-      title: "حظ أوفر",
-
-      icon: "error",
-    }).then(() => (window.parent.location = "../../pages/main/home.php"));
   });
 });

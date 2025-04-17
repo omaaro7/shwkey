@@ -97,3 +97,8 @@
     .courseOverView{
         background-color: #5b8ab3;
     }
+    .course-text{
+      background-color: #5b8ab3;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
