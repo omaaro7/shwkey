@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,7 +18,20 @@
 </head>
 
 <body>
+  <section class="cover col-12 d-flex align-items-center justify-content-center flex-column " style="background: #00000094;
+  position: fixed;
+  height: 100vh;
+  z-index: 20;
+  backdrop-filter: blur(9px);
+">
+    <div class="imgs d-flex align-items-center justify-content-around">
+    <canvas id="canvasOne" width="300" height="300" class="col-3 col-md-3 col-lg-3 col-xl-4 " style="visibility: hidden;"></canvas>
+      <img src="assets/media/imgs/robot.png" class="col-4 col-md-5 col-lg-4 col-xl-3" alt="" style="    filter: drop-shadow(2px 7px 6px black);">
+    <canvas id="canvasTwo" width="300" height="300" class="col-3 col-md-3 col-lg-3 col-xl-4 " style="visibility: hidden;"></canvas>
+    </div>
+    <button id="sayHelloBtn">ابدأ رحلتك الأن </button>
 
+  </section>
   <header class="header">
     <nav>
       <div class="nav__bar">
@@ -288,20 +300,37 @@
 
   </footer>
   <section class="sticky">
-  <div class="bubbles">
+    <div class="bubbles">
       <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    
-  </div>
-</section>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+
+    </div>
+  </section>
+  
+    <script type="module">
+      import { DotLottie } from "./assets/js/tools/lotties.js";
+
+      new DotLottie({
+        autoplay: true,
+        loop: true,
+        canvas: document.getElementById("canvasOne"),
+        src: "assets/media/animations/waves.json", // replace with your .lottie or .json file URL
+      });
+      new DotLottie({
+        autoplay: true,
+        loop: true,
+        canvas: document.getElementById("canvasTwo"),
+        src: "assets/media/animations/waves.json", // replace with your .lottie or .json file URL
+      });
+    </script>
   <script src="assets/js/tools/aos.js"></script>
   <script>
     AOS.init({});
@@ -312,7 +341,8 @@
   <script src="assets/js/tools/info.js"></script>
   <script src="assets/js/tools/sweetalert2.js"></script>
   <script src="assets/js/modules/getCookies.js" type="module"></script>
-  <script src="assets/js/index.js"></script>
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=OoIbnfpU"></script>
+  <script src="assets/js/index.js" type="module"></script>
   <script src="assets/js/home.js" type="module"></script>
 </body>
 

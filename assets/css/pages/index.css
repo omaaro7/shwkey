@@ -11,6 +11,19 @@ body {
   background-color: #021526;
   color: white;
 }
+#sayHelloBtn{
+  background-color: #5b86bb;
+  border: none;
+  font-size: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+#sayHelloBtn:hover{
+  transition: all 0.3s;
+  box-shadow: -13px 9px 1px 1px #3d5b7a;}
 .header {
   background-image: url("../../media/imgs/back.jpg");
   
