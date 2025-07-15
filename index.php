@@ -18,12 +18,13 @@
 </head>
 
 <body>
-  <section class="cover col-12 d-flex align-items-center justify-content-center flex-column " style="background: #00000094;
+  <section class="cover col-12 d-flex align-items-center justify-content-center flex-column d-none" style="background: #00000094;
   position: fixed;
   height: 100vh;
   z-index: 20;
   backdrop-filter: blur(9px);
 ">
+
     <div class="imgs d-flex align-items-center justify-content-around">
     <canvas id="canvasOne" width="300" height="300" class="col-3 col-md-3 col-lg-3 col-xl-4 " style="visibility: hidden;"></canvas>
       <img src="assets/media/imgs/robot.png" class="col-4 col-md-5 col-lg-4 col-xl-3" alt="" style="    filter: drop-shadow(2px 7px 6px black);">
@@ -32,6 +33,7 @@
     <button id="sayHelloBtn">ابدأ رحلتك الأن </button>
 
   </section>
+  <div class="robot-container d-flex align-items-center justify-content-center"><i class="fa-light fa-robot fs-2"></i></div>
   <header class="header">
     <nav>
       <div class="nav__bar">
@@ -342,6 +344,7 @@
   <script src="assets/js/tools/sweetalert2.js"></script>
   <script src="assets/js/modules/getCookies.js" type="module"></script>
   <script src="https://code.responsivevoice.org/responsivevoice.js?key=OoIbnfpU"></script>
+  <script src="assets/js/modules/robot.js"></script>
   <script src="assets/js/index.js" type="module"></script>
   <script src="assets/js/home.js" type="module"></script>
 </body>

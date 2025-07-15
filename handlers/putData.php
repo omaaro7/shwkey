@@ -4,7 +4,7 @@
 include('../config/conn.php');
 
 // Static admin token for validation
-define('ADMIN_TOKEN', 'myadmin'); // Replace with your desired static admin token
+define(constant_name: 'ADMIN_TOKEN', value: 'myadmin'); // Replace with your desired static admin token
 
 // Function to sanitize input data
 function sanitize_input($data) {
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     // Retrieve parameters from the URL
     $id = isset($_GET['id']) ? (int) $_GET['id'] : null;
     $table = isset($_GET['table']) ? sanitize_input($_GET['table']) : null;
-    $adminToken = isset($_GET['admin_token']) ? sanitize_input($_GET['admin_token']) : null;
+    $adminToken = isset($_COOKIE['admin_token']);
     $userToken = isset($_GET['token']) ? sanitize_input($_GET['token']) : null;
 
     // Validate URL parameters

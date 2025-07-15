@@ -270,7 +270,7 @@ async function showSettings() {
         let res = await fetch(
           `../handlers/putData.php?id=${parseInt(
             inputs[0].parentElement.parentElement.dataset.id
-          )}&table=users&admin_token=${getCookieValue("admin_token")}`,
+          )}&table=users`,
           {
             method: "PUT",
             headers: {
@@ -285,7 +285,7 @@ async function showSettings() {
             icon: "success",
           }).then(() => {
             reloadCount++;
-          });
+          }).then(() => window.location.reload())
         }
       }
     });

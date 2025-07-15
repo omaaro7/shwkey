@@ -1,7 +1,8 @@
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
-
+const robotSec = document.querySelector(".cover");
+let checker = false;
 menuBtn.addEventListener("click", () => {
   navLinks.classList.toggle("open");
 
@@ -38,18 +39,20 @@ class TextToSpeech {
   greetByName(name, callback) {
     const phrase = `تَشَرَّفْتُ بِمَعْرِفَتِكَ، يَا ${name}! هَيَّا نَنْطَلِقُ فِي مُغَامَرَتِنَا الأُولَى!`;
     this.speak(phrase, "Arabic Female", callback);
+    checker = true;
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  let clicked = false;
   const tts = new TextToSpeech();
   const clicker = document.getElementById("sayHelloBtn");
   const canveses = document.querySelectorAll("canvas");
 
   clicker.addEventListener("click", () => {
+    clicker.remove();
     canveses[0].style.visibility = "visible";
     canveses[1].style.visibility = "visible";
-
     setTimeout(() => {
       tts.sayHello(() => {
         startListening();
@@ -58,7 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function startListening() {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
       alert("المتصفح لا يدعم التعرف على الصوت.");
       return;
@@ -71,11 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     recognition.start();
 
-    recognition.onresult = (event) => {
+    recognition.onresult = async (event) => {
       const name = event.results[0][0].transcript;
       // نكمل الرد بعد الاسم
       const tts = new TextToSpeech();
       tts.greetByName(name);
+      if (checker) {
+        robotSec.classList.add("d-none");
+      }
     };
 
     recognition.onerror = (event) => {

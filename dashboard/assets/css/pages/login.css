@@ -1,0 +1,123 @@
+body {
+  background-color: rgb(23, 45, 92);
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: bolde;
+  direction: rtl;
+}
+
+.login-form {
+  background: rgba(31, 104, 161, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.3px);
+  -webkit-backdrop-filter: blur(7.3px);
+  border: 1px solid rgba(31, 104, 161, 0.17);
+  padding: 2rem !important;
+  color: white;
+  border: 1px solid rgba(122, 129, 153, 0.603);
+}
+
+.line {
+  margin-bottom: 1.5rem;
+}
+
+.line label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.line input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.line input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.line input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Add submit button styling */
+.login-form button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #1f68a1 0%, #0a4f8b 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-form button[type="submit"]:hover {
+  background: linear-gradient(135deg, #0a4f8b 0%, #1f68a1 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Add animation for form elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-form {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.line {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.line:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.line:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+  .login-form {
+    padding: 1.5rem !important;
+  }
+  
+  .line label {
+    font-size: 1rem;
+  }
+  
+  .line input {
+    padding: 0.6rem 0.8rem;
+  }
+}

@@ -19,8 +19,8 @@
 
     data.forEach((ele, index) => {
       let courseStracture = `
-        <div class="course-container col-12 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center justify-content-center mt-3">
-          <div class="course col-11 aos-init aos-animate" data-aos="zoom-in" data-aos-duration="600">
+        <div class="course-container col-12 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center justify-content-center mt-3"   data-aos="zoom-in"   data-aos-duration="600">
+          <div class="course col-11 ">
             <div class="course-img col-12">
               <img src="../../assets/media/imgs/courses/${ele.thumbnail}" alt="${ele.title || 'course image'}" />
             </div>

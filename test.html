@@ -1,133 +1,236 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لعبة المتاهة باستخدام الصوت</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>منصة تعليم أولياء الأمور</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
+    :root {
+      --dark-bg: #0f172a;
+      --card-bg: #1a273a;
+      --text-light: #cbd5e1;
+      --primary: #14b8a6;
+      --accent: #38bdf8;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-weight: 800 !important;
+      color: var(--accent);
+    }
+
+    p {
+      color: var(--text-light);
+    }
+
+    .navbar {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #0d9488;
+    }
+
+    .btn-outline-info {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-outline-info:hover {
+      background-color: var(--accent);
+      color: #000;
+    }
+
+    .header-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1a273a 100%);
+      padding: 6rem 1rem 4rem;
       text-align: center;
-      margin-top: 50px;
     }
-    .maze {
-      display: grid;
-      grid-template-columns: repeat(5, 50px);
-      grid-template-rows: repeat(5, 50px);
-      gap: 5px;
-      margin: 0 auto;
+
+    .section-title {
+      color: var(--accent);
     }
-    .cell {
-      width: 50px;
-      height: 50px;
-      background-color: lightgray;
-      border: 1px solid black;
+
+    .course-card {
+      background-color: var(--card-bg);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      position: relative;
     }
-    .player {
-      background-color: blue;
+
+    .course-card:hover {
+      transform: translateY(-5px);
     }
-    .exit {
-      background-color: green;
+
+    .badge {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
     }
-    .wall {
-      background-color: black;
+
+    .footer {
+      background-color: #0a192f;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: var(--primary);
+    }
+
+    .filter-btn {
+      margin: 0.25rem;
+      border-radius: 20px;
+    }
+
+    .d-none {
+      display: none !important;
     }
   </style>
 </head>
 <body>
 
-  <h1>لعبة المتاهة - استخدم الأوامر الصوتية للتحرك</h1>
-  <p>قل "فوق"، "تحت"، "يسار"، أو "يمين" للتحرك داخل المتاهة.</p>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">رعاية وتعليم</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">الرئيسية</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">الدورات</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">من نحن</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">تواصل معنا</a></li>
+        </ul>
+        <a class="btn btn-primary" href="#">ابدأ الآن</a>
+      </div>
+    </div>
+  </nav>
 
-  <div id="maze" class="maze"></div>
-  <p id="status">ابدأ اللعبة وقل "فوق"، "تحت"، "يسار"، أو "يمين".</p>
+  <!-- Header Section -->
+  <section class="header-hero text-white">
+    <div class="container">
+      <h1 class="display-5 fw-bold mb-3">تعلم كيف تدعم طفلك</h1>
+      <p class="lead mb-4">منصة تدريبية متخصصة لأولياء الأمور لرعاية الأطفال من ذوي الإعاقة</p>
+      <a href="#" class="btn btn-primary btn-lg">استعرض الدورات</a>
+    </div>
+  </section>
 
+  <!-- Courses Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">الدورات المتاحة</h2>
+      <div class="text-center mb-4">
+        <button class="btn btn-outline-info filter-btn" onclick="filterCourses('all')">الكل</button>
+        <button class="btn btn-outline-info filter-btn" onclick="filterCourses('autism')">التوحد</button>
+        <button class="btn btn-outline-info filter-btn" onclick="filterCourses('speech')">التأخر اللغوي</button>
+        <button class="btn btn-outline-info filter-btn" onclick="filterCourses('support')">الدعم النفسي</button>
+      </div>
+
+      <div class="row g-4" id="courseContainer">
+        <div class="col-md-4 course-item" data-category="autism">
+          <div class="p-4 course-card">
+            <span class="badge bg-success position-absolute top-0 start-0 m-3">مجانية</span>
+            <h5>أساسيات التوحد</h5>
+            <p>فهم التوحد وكيفية التعامل مع الأطفال المصابين به</p>
+            <a href="#" class="btn btn-primary btn-sm">عرض الدورة</a>
+          </div>
+        </div>
+        <div class="col-md-4 course-item" data-category="speech">
+          <div class="p-4 course-card">
+            <span class="badge bg-info position-absolute top-0 start-0 m-3">120 جنيه</span>
+            <h5>تأهيل النطق والتأخر اللغوي</h5>
+            <p>استراتيجيات لمساعدة الأطفال على تحسين مهارات الكلام</p>
+            <a href="#" class="btn btn-primary btn-sm">عرض الدورة</a>
+          </div>
+        </div>
+        <div class="col-md-4 course-item" data-category="support">
+          <div class="p-4 course-card">
+            <span class="badge bg-info position-absolute top-0 start-0 m-3">80 جنيه</span>
+            <h5>الدعم النفسي للأهل</h5>
+            <p>كيفية إدارة الضغوط النفسية وتقديم الدعم الذاتي</p>
+            <a href="#" class="btn btn-primary btn-sm">عرض الدورة</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us Section -->
+  <section class="py-5" style="background-color: #16253a;">
+    <div class="container text-center">
+      <h2 class="section-title mb-4">لماذا تختار منصتنا؟</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <i class="fas fa-check-circle fa-2x mb-3 text-info"></i>
+          <h5>خبراء متخصصون</h5>
+          <p>محتوى مقدم من مختصين في التربية الخاصة وعلم النفس.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-brain fa-2x mb-3 text-info"></i>
+          <h5>محتوى موثوق</h5>
+          <p>استناد إلى أحدث الأبحاث العلمية والتجارب الواقعية.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-clock fa-2x mb-3 text-info"></i>
+          <h5>مرونة تامة</h5>
+          <p>تعلم في الوقت والمكان الذي يناسبك.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 منصة رعاية وتعليم. جميع الحقوق محفوظة.</p>
+      <div>
+        <a href="#"><i class="fab fa-facebook fa-lg me-3"></i></a>
+        <a href="#"><i class="fab fa-twitter fa-lg me-3"></i></a>
+        <a href="#"><i class="fab fa-whatsapp fa-lg"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // تمثيل المتاهة كمصفوفة
-    const maze = [
-      [0, 0, 0, 0, 0],
-      [0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0],
-      [0, 1, 0, 0, 0],
-      [0, 0, 0, 1, 0]
-    ];
-
-    // موقع اللاعب في المتاهة
-    const player = { x: 0, y: 0 };
-    const exit = { x: 4, y: 4 }; // موقع الخروج
-
-    // إنشاء المتاهة داخل الصفحة
-    const mazeContainer = document.getElementById('maze');
-    function createMaze() {
-      mazeContainer.innerHTML = ''; // مسح المتاهة الحالية قبل رسمها مرة أخرى
-      for (let row = 0; row < 5; row++) {
-        for (let col = 0; col < 5; col++) {
-          const cell = document.createElement('div');
-          cell.classList.add('cell');
-          if (maze[row][col] === 1) {
-            cell.classList.add('wall'); // جدار
-          }
-          if (player.x === col && player.y === row) {
-            cell.classList.add('player'); // اللاعب
-          }
-          if (exit.x === col && exit.y === row) {
-            cell.classList.add('exit'); // الخروج
-          }
-          mazeContainer.appendChild(cell);
+    function filterCourses(category) {
+      const items = document.querySelectorAll('.course-item');
+      items.forEach(item => {
+        item.classList.remove('d-none');
+        if (category !== 'all' && item.getAttribute('data-category') !== category) {
+          item.classList.add('d-none');
         }
-      }
+      });
     }
-
-    // تحريك اللاعب بناءً على الأمر الصوتي
-    function movePlayer(direction) {
-      const newX = player.x;
-      const newY = player.y;
-
-      if (direction === 'فوق' && player.y > 0 && maze[player.y - 1][player.x] !== 1) {
-        player.y--;
-      } else if (direction === 'تحت' && player.y < 4 && maze[player.y + 1][player.x] !== 1) {
-        player.y++;
-      } else if (direction === 'يسار' && player.x > 0 && maze[player.y][player.x - 1] !== 1) {
-        player.x--;
-      } else if (direction === 'يمين' && player.x < 4 && maze[player.y][player.x + 1] !== 1) {
-        player.x++;
-      }
-
-      createMaze();
-      checkWin();
-    }
-
-    // التحقق إذا وصل اللاعب إلى الخروج
-    function checkWin() {
-      if (player.x === exit.x && player.y === exit.y) {
-        document.getElementById('status').textContent = 'مبروك! لقد فزت!';
-      }
-    }
-
-    // إعداد التعرف على الصوت
-    const recognition = new webkitSpeechRecognition();
-    recognition.lang = 'ar-AR'; // تعيين اللغة إلى العربية
-    recognition.continuous = true;
-
-    recognition.onresult = (event) => {
-      const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
-      if (['فوق', 'تحت', 'يسار', 'يمين'].includes(transcript)) {
-        movePlayer(transcript);
-      }
-    };
-
-    recognition.onerror = (event) => {
-      console.error('خطأ في التعرف على الصوت:', event.error);
-    };
-
-    recognition.onstart = () => {
-      document.getElementById('status').textContent = 'استماع لأوامرك...';
-    };
-
-    recognition.start();
-
-    createMaze(); // رسم المتاهة في البداية
   </script>
-
 </body>
 </html>
