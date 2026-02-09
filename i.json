@@ -1,0 +1,14 @@
+[
+  {
+    "name": "shwkey",
+    "version": "1.0.0",
+    "description": "A simple PHP application for generating JWT tokens.",
+    "main": "index.php",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": ["jwt", "php", "authentication"],
+    "author": "Your Name",
+    "license": "MIT"
+  }
+]
